@@ -56,7 +56,6 @@ class ProductController extends Controller
             $filePath = $request->img_path->storeAs('products', $filename, 'public');
             $product->img_path = '/storage/' . $filePath;
         }
-        // dd($product);
         $product->save();
 
         // 全ての処理が終わったら、商品一覧画面に戻ります。
@@ -120,9 +119,12 @@ public function update(Request $request, Product $product)
     {
         // リクエストされた情報を確認して、必要な情報が全て揃っているかチェックします。
         $request->validate([
-            'product_name' => 'required',
+            'product_name' => 'required', //requiredは必須という意味です
+            'company_id' => 'nullable',
             'price' => 'required',
             'stock' => 'required',
+            'comment' => 'nullable', //'nullable'はそのフィールドが未入力でもOKという意味です
+            'img_path' => 'nullable|image|max:2048',
         ]);
         //バリデーションによりフォームに未入力項目があればエラーメッセー発生させる（未入力です　など）
 
