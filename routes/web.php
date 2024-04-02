@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 // "Auth"という部品を使うために取り込んでいます。この部品はユーザー認証（ログイン）に関する処理を行います
 
 Route::get('/', function () {
-    return view('welcome');
+   
 });
 
 Route::get('/', function () {
@@ -21,7 +21,8 @@ Route::get('/', function () {
         // 商品一覧ページ（ProductControllerのindexメソッドが処理）へリダイレクトします
     } else {
         // ログイン状態でなければ
-        return redirect()->route('login');
+        // return redirect()->route('linelogin');
+        return view('welcome');
         // ログイン画面へリダイレクトします
     }
 });

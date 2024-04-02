@@ -21,7 +21,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    <img src="{{ asset('storage/imgs/eventee_logo_obl_big.png') }}" width="8%" height="8%">
                 </a>
                 <button 
                     class="navbar-toggler" 

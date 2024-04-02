@@ -33,9 +33,10 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        
         $request->validate([
             'product_name' => 'required', //requiredは必須という意味です
-            'company_id' => 'required',
+            'company_id' => 'nullable',
             'price' => 'required',
             'stock' => 'required',
             'comment' => 'nullable', //'nullable'はそのフィールドが未入力でもOKという意味です
@@ -55,7 +56,7 @@ class ProductController extends Controller
             $filePath = $request->img_path->storeAs('products', $filename, 'public');
             $product->img_path = '/storage/' . $filePath;
         }
-
+        // dd($product);
         $product->save();
 
         // 全ての処理が終わったら、商品一覧画面に戻ります。
