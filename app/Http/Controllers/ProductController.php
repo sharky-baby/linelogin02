@@ -120,7 +120,6 @@ public function update(Request $request, Product $product)
         // リクエストされた情報を確認して、必要な情報が全て揃っているかチェックします。
         $request->validate([
             'product_name' => 'required', //requiredは必須という意味です
-            'company_id' => 'nullable',
             'price' => 'required',
             'stock' => 'required',
             'comment' => 'nullable', //'nullable'はそのフィールドが未入力でもOKという意味です
@@ -133,7 +132,9 @@ public function update(Request $request, Product $product)
         //productモデルのproduct_nameをフォームから送られたproduct_nameの値に書き換える
         $product->price = $request->price;
         $product->stock = $request->stock;
-
+        $product->comment = $product->comment;
+        $product->img_path = $product->img_path;
+        
         // 更新した商品を保存します。
         $product->save();
         // モデルインスタンスである$productに対して行われた変更をデータベースに保存するためのメソッド（機能）です。
