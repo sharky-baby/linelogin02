@@ -132,8 +132,8 @@ public function update(Request $request, Product $product)
         //productモデルのproduct_nameをフォームから送られたproduct_nameの値に書き換える
         $product->price = $request->price;
         $product->stock = $request->stock;
-        $product->comment = $product->comment;
-        $product->img_path = $product->img_path;
+        $product->comment = $request->comment;
+        $product->img_path = $request->img_path;
         
         // 更新した商品を保存します。
         $product->save();
